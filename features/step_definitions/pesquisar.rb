@@ -1,7 +1,7 @@
-Dado("que estou logado no sistema") do
+Dado("que estou logado no sistema como {string} e {string}") do |usuario, senha|
   visit '/'
   @login = Login.new
-  @login.logar
+  @login.logar(usuario, senha)
   @pesquisar = Pesquisar.new
 end
 
