@@ -4,22 +4,25 @@ require 'capybara/cucumber'
 require "rspec"
 require 'site_prism'
 
+$env = ENV['BROWSER']
+$headless = ENV['HEADLESS']
 
-
-Capybara.register_driver :insecure_selenium do |app|
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :firefox,
-    desired_capabilities: { accept_insecure_certs: true }
-  )
-  
+if $headless
+    Capybara.register_driver :selenium do |app|
+    Capybara::Poltergeist::Driver.new(app, js_errors: false)
 end
+end
+Capybara.configure do |c|
+  c.app_host = 'https://prehom.dpf.gov.br/siscaer-intranet-web/'
+if $env == 'firefox'
+    c.default_driver = :selenium
+elsif $env == 'chrome'
+    c.default_driver = :selenium_chrome
+elsif $env == 'chrome_headless'
+    c.default_driver = :selenium_chrome_headless
 
-Capybara.configure do |config|
-  config.run_server = false
-  config.default_driver = :insecure_selenium
-
-  config.app_host = 'https://prehom.dpf.gov.br/siscaer-intranet-web/'
 end
 
 Capybara.default_max_wait_time = 20
+    
+end
