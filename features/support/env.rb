@@ -7,6 +7,7 @@ require 'site_prism'
 
 
 Capybara.register_driver :insecure_selenium do |app|
+  
   Capybara::Selenium::Driver.new(
     app,
     browser: :firefox,
@@ -16,6 +17,7 @@ Capybara.register_driver :insecure_selenium do |app|
 end
 
 Capybara.configure do |config|
+
   config.run_server = false
   config.default_driver = :insecure_selenium
 
