@@ -37,3 +37,19 @@ Quando("eu estou verificando os dados do usuario {string}") do |nome|
   Entao("vejo a seguinte menssagem {string}") do |msg|
     expect(page).to have_content msg
   end
+
+  Entao("eu clico no botao acao") do
+    @visualizar.ocorrencias
+    @visualizar.tabela
+  end
+  
+  Entao("e vejo a seguinte menssagem {string}") do |msg|
+      expect(page).to have_content msg
+  end
+
+  Quando("estou verificando os dados do usuario {string} e clico no botao fechar") do |nome|
+    @visualizar.pesquisar_usuario(nome) 
+    @visualizar.ver_dados
+    @visualizar.ocorrencias
+    @visualizar.fechar_ocorrencias
+  end

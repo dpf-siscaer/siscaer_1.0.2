@@ -1,9 +1,9 @@
 class Visualizar < SitePrism::Page
 
     element :nome_restricao, '#nome'
-    element :cancelar, '#cancelar'
-    element :viusalizar_ocorrencias, '#avancar'
-
+    elements :list, 'tr > td '
+   
+  
     def initialize
         @pesquisar = Pesquisar.new
     end
@@ -17,10 +17,25 @@ class Visualizar < SitePrism::Page
     end
 
     def cancelar_visualizacao
-        cancelar.click
+        click_button 'cancelar'
     end
 
     def ocorrencias 
-        viusalizar_ocorrencias.click
+        click_button 'avancar'
+    end
+
+    def tabela
+
+       puts @tamanho = list.size/6
+       @i = 0
+
+        while @i < @tamanho do
+            list[5].click_button 'pfTableselect0'
+            click_button 'download0'
+            @i +=1
+       end
+    end
+    def fechar_ocorrencias
+        click_button 'fechar'
     end
 end

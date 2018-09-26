@@ -25,3 +25,14 @@ Cenario: Visualizar as ocorrencias dos usuarios cadastrados
 Quando eu estou verificando os dados do usuario 'IGOR NOAH GONÇALVES'
 Entao eu clico no botao Visualiar Oorrencias 
 Entao vejo a seguinte menssagem 'Visualizar Credenciado com Restrição'
+
+@visualizar_ocorrencias_iteracao
+Cenario: Visualizar as ocorrencias dos usuarios cadastrados iteragindo
+Quando eu estou verificando os dados do usuario 'IGOR NOAH GONÇALVES'
+Entao eu clico no botao acao
+Entao e vejo a seguinte menssagem 'Dados do Credenciado'
+
+@visualizar_ocorrencias_fechar
+Cenario: Fechar o campo de Visao das ocorrencias dos usuarios cadastrados
+Quando estou verificando os dados do usuario 'IGOR NOAH GONÇALVES' e clico no botao fechar
+Entao vejo a seguinte menssagem 'Pesquisar'
