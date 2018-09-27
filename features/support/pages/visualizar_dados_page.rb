@@ -26,7 +26,7 @@ class Visualizar < SitePrism::Page
 
     def tabela
 
-       puts @tamanho = list.size/6
+       @tamanho = list.size/6
        @i = 0
 
         while @i < @tamanho do

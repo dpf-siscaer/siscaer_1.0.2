@@ -15,7 +15,6 @@ end
 
 Entao("vejo o nome Completo {string}") do |nome|
   expect(@pesquisar.lista[0].text).to eql nome
-  puts 
 end
 
 Quando("eu insiro um caractere {string} no Campo Mae") do |caractere|
