@@ -14,7 +14,9 @@ class Cadastrar < SitePrism::Page
     element :cpf, '#cpf'
     element :nome_mae, '#nomeMae'
     element :nacionalidade, '#nacionalidade'
+   
     element :tipo_doc, '#tipoDocumento'
+
     element :nacionalidade_desconhecida, '#nacionalidadeDesconhecida'
     element :adcionar_doc, '#adicionarDocumento'
     element :numero_doc, '#numeroDocumento'
@@ -53,14 +55,17 @@ class Cadastrar < SitePrism::Page
        end
       
 
-    end 
-    
-   # def doc_selecao (dado7)
-   #     doc = dado7
-   #     doc = doc.upcase
-   #     select = doc , from: tipo_doc
-   #     puts from tipo_doc.value
-   # end
+    end
 
-    
+   
+  #   def doc_selecao (dado7)
+  #      doc = dado7
+  #      doc = doc.upcase
+  #      tipo_doc.select_option
+  #      puts from tipo_doc.value
+  #  end
+  # 'option.ng-star-inserted:nth-child(2)'
+  # 'option.ng-star-inserted:nth-child(3)'
+  # 'option.ng-star-inserted:nth-child(4)'
+  # 'option.ng-star-inserted:nth-child(5)' 
 end

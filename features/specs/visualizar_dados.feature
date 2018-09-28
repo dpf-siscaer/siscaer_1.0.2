@@ -1,12 +1,13 @@
 #language: pt
 
+
 @logout
 @visualizar
 
 Funcionalidade: Visualização
 
 Contexto: Sistema Logado
-Dado que eu estou logado como "rafael.rsl" e 'ctidpf'
+Dado que eu estou logado como "juliana.jp" e 'ctidpf'
 
 @visualizar_dados_usuario_cadastrato
 Cenario: Visualizar os usuários cadastrados no Sistema

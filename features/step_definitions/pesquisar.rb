@@ -13,8 +13,8 @@ Quando("eu insiro um nome {string} no campo Nome Completo") do |nome|
   @pesquisar.pesquisar_nome(nome)
 end
 
-Entao("vejo o nome Completo {string}") do |nome|
-  expect(@pesquisar.lista[0].text).to eql nome
+Entao("vejo o nome Completo {string}") do |nome_completo|
+  expect(@pesquisar.lista[0].text).to eql nome_completo
 end
 
 Quando("eu insiro um caractere {string} no Campo Mae") do |caractere|

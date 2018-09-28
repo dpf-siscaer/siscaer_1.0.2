@@ -26,3 +26,4 @@ end
 
 Capybara.default_max_wait_time = 20
 
+Capybara.page.driver.browser.manage.window.maximize

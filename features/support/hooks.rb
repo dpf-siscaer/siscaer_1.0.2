@@ -1,3 +1,4 @@
+
 After('@logout') do
     find(:css, 'em.fa').click
 end

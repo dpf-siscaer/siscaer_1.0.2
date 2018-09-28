@@ -6,7 +6,7 @@
 Funcionalidade: Cadastrar
 
 Contexto: Sistema Logado
-Dado que eu estou logado como "rafael.rsl" e 'ctidpf'
+Dado que eu estou logado como "juliana.jp" e 'ctidpf'
 
 @cadastrar
 Cenario: Cadastrar candidatos no Canard

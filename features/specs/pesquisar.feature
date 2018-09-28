@@ -5,7 +5,7 @@
 Funcionalidade: Pesquisar
 
 Contexto: Sistema Logado
-Dado que estou logado no sistema como "rafael.rsl" e 'ctidpf'
+Dado que estou logado no sistema como "juliana.jp" e 'ctidpf'
 
 @pesquisa_caractere_nome
 Cenario: Pesquisa os Candidatos Cadastrados no CANAID informando um caractere no Campo Nome Completo
