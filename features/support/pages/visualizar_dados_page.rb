@@ -1,12 +1,10 @@
 class Visualizar < SitePrism::Page
 
-    element :nome_restricao, '#nome'
-    elements :list, 'tr > td '
-   
-  
     def initialize
         @pesquisar = Pesquisar.new
     end
+
+    elements :list, 'tr > td '
 
     def pesquisar_usuario(nome)
         @pesquisar.pesquisar_nome(nome) 

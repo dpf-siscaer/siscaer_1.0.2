@@ -13,8 +13,8 @@ Entao("clico na lupa para pesquisar") do
     @visualizar.ver_dados
 end
   
-Entao("eu vejo o nome cadastrado {string}") do |nome|
-    expect(@visualizar.nome_restricao.value).to eql nome
+Entao("eu vejo o nome cadastrado {string}") do |nome_result|
+  expect(find('#nome').value).to have_content nome_result
 end
 
 Quando("eu estou verificando os dados do usuario {string}") do |nome|
