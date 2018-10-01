@@ -14,7 +14,7 @@ Entao("clico na lupa para pesquisar") do
 end
   
 Entao("eu vejo o nome cadastrado {string}") do |nome_result|
-  expect(find('#nome').value).to have_content nome_result
+  find('#nome').value.eql? nome_result
 end
 
 Quando("eu estou verificando os dados do usuario {string}") do |nome|

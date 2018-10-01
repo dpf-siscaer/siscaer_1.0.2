@@ -41,48 +41,45 @@ class Cadastrar < SitePrism::Page
         btn_cancelar.click
     end
 
-    def adicionar_documentos (argumento)
-        adcionar_doc.click
-        doc_selecao argumento
-    end
+    #metodo seleção documentos
+    def doc_selecao (arg)
+        doc = arg.upcase
+      if doc.eql? "PASSAPORTE"
+                find('option.ng-star-inserted:nth-child(2)').select_option
+            elsif doc.eql? "RG"
+                find('option.ng-star-inserted:nth-child(3)').select_option
+            elsif doc.eql? "CNM"
+                find('option.ng-star-inserted:nth-child(4)').select_option
+            elsif doc.eql? "DNI"
+                find('option.ng-star-inserted:nth-child(5)').select_option  
+            else
+      end
+   end
 
     #metodo de acao
-    def cadastrar (dado1, dado2, dado3, dado4, dado5, dado6, dado7, dado8)
-        nome.set dado1
-        data_nascimento.set dado2
-        cpf.set dado3
-        nome_mae.set dado4
-        dados5 = dado5.upcase
-       if dados5.eql? "SIM"
+    def cadastrar (nome_candidato, data_nascimento_candidato, cpf_candidato, nome_mae_candidato, nasc_desc, nacionalidade_candidato)
+            nome.set nome_candidato
+            data_nascimento.send_keys data_nascimento_candidato
+            cpf.set cpf_candidato
+            nome_mae.set nome_mae_candidato
+           nasc_desc = nasc_desc .upcase
+       if nacionalidade.eql? "SIM"
             nacionalidade_desconhecida.click 
             else
-                nacionalidade.set dados6
+                nacionalidade.set nacionalidade_candidato
                 auto_complet.click
        end
     end
 
-   
-    def doc_selecao (arg)
-        doc = arg.upcase
-       @op = ""
+    #método adicionar Documentos
+    def adicionar_documentos (argumento)
+        adcionar_doc.click
+        doc_selecao argumento
+    end
+  
 
-      if doc.eql? "PASSAPORTE"
-                find('option.ng-star-inserted:nth-child(2)').select_option
-                @op = "Deu Bom"
-            elsif doc.eql? "RG"
-                find('option.ng-star-inserted:nth-child(3)').select_option
-                @op = "Deu Bom"
-            elsif doc.eql? "CNM"
-                find('option.ng-star-inserted:nth-child(4)').select_option
-                @op = "Deu Bom" 
-            elsif doc.eql? "DNI"
-                find('option.ng-star-inserted:nth-child(5)').select_option
-                @op = "Deu Bom" 
-            else
-                @op = "Deu ruim"
-      end
-        puts "O teste #{@op} !!!!!!"
-        puts "---------------------------------"
-   end
-   
+     
 end
+
+
+
