@@ -4,16 +4,10 @@ class Visualizar < SitePrism::Page
         @pesquisar = Pesquisar.new
     end
 
+    #Mapeando Elements
     elements :list, 'tr > td '
 
-    def pesquisar_usuario(nome)
-        @pesquisar.pesquisar_nome(nome) 
-    end
-
-    def ver_dados
-        @pesquisar.lista[4].click_button 'pfTableselect0'
-    end
-
+    #Métodos Botões
     def cancelar_visualizacao
         click_button 'cancelar'
     end
@@ -22,6 +16,21 @@ class Visualizar < SitePrism::Page
         click_button 'avancar'
     end
 
+    def fechar_ocorrencias
+        click_button 'fechar'
+    end
+
+    #Método ação: Pesquisar Candidato 
+    def pesquisar_usuario(nome)
+        @pesquisar.pesquisar_nome(nome) 
+    end
+
+    #Método ação: Visualizar oos Dados na Tablea
+    def ver_dados
+        @pesquisar.lista[4].click_button 'pfTableselect0'
+    end
+
+    #Método ação: realizar o Download dos PDF na Tabela
     def tabela
 
        @tamanho = list.size/6
@@ -33,7 +42,5 @@ class Visualizar < SitePrism::Page
             @i +=1
        end
     end
-    def fechar_ocorrencias
-        click_button 'fechar'
-    end
+  
 end

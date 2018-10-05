@@ -42,8 +42,8 @@ class Cadastrar < SitePrism::Page
     end
 
     #metodo seleção documentos
-    def doc_selecao (arg)
-        doc = arg.upcase
+    def doc_selecao (tipo_documento)
+        doc = tipo_documento.upcase
       if doc.eql? "PASSAPORTE"
                 find('option.ng-star-inserted:nth-child(2)').select_option
             elsif doc.eql? "RG"
@@ -52,14 +52,13 @@ class Cadastrar < SitePrism::Page
                 find('option.ng-star-inserted:nth-child(4)').select_option
             elsif doc.eql? "DNI"
                 find('option.ng-star-inserted:nth-child(5)').select_option  
-            else
       end
    end
 
-    #metodo de acao
+    #metodo de acao: Cadastrar Candidato
     def cadastrar (nome_candidato, data_nascimento_candidato, cpf_candidato, nome_mae_candidato, nasc_desc, nacionalidade_candidato)
             nome.set nome_candidato
-            data_nascimento.send_keys data_nascimento_candidato
+            data_nascimento.set data_nascimento_candidato
             cpf.set cpf_candidato
             nome_mae.set nome_mae_candidato
            nasc_desc = nasc_desc .upcase
@@ -71,13 +70,16 @@ class Cadastrar < SitePrism::Page
        end
     end
 
-    #método adicionar Documentos
-    def adicionar_documentos (argumento)
+    #método de ação: adicionar Documentos do Candidato
+    def adicionar_documentos (tipo_doc)
         adcionar_doc.click
-        doc_selecao argumento
+        doc_selecao tipo_doc
     end
   
+    #Método de ação: selicinar o tipo de documento
+    def tipo_ocorrencia (ocorrencia)
 
+    end
      
 end
 

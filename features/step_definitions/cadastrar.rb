@@ -6,10 +6,11 @@ Quando("eu estou no formulario cadastro") do
      data_nascimento = "30/12/1980"
      cpf = "88734501134"
      nome_mae = "Maria do Carmo"
-     nascionalidade = ''
-       #@cadastro.cadastrar nome, data_nascimento, cpf, nome_mae, nascionalidade
-      # @cadastro.data
-       #sleep(2)
+     nasc_desconhecida = 'Sim'
+     nacionalidade_cand =''
+     @cadastro.cadastrar nome, data_nascimento, cpf, nome_mae, nasc_desconhecida, nacionalidade_cand
+     #@cadastro.data
+     #sleep(2)
 
   end                                                                            
                                                                                  
