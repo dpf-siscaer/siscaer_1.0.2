@@ -1,11 +1,3 @@
-Before ('@ChangeBrowserZoom') do
-    page = Capybara::page
-    #zoom = 80
-    #page.execute_script("document.getElementsByTagName('html').style.zoom='#{zoom})}%';")
-    page.execute_script("document.getElementsByTagName('html')[0].style['zoom'] = 0.75")
-end
-
-
 After('@logout') do
     find(:css, 'em.fa').click
 end

@@ -1,6 +1,6 @@
 #language: pt
 
-@ChangeBrowserZoom
+
 @logout
 @visualizar
 

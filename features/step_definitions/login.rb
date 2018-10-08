@@ -5,6 +5,7 @@
   Quando("eu informo um {string} e {string}") do |usuario, passoword|
     @login = Login.new
     @login.logar(usuario, passoword)
+   
   end
   
   Entao("vejo {string}") do |msg|

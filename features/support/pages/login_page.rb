@@ -11,5 +11,4 @@ class Login < SitePrism::Page
         click_button 'kc-login'
         
     end
-    
 end
