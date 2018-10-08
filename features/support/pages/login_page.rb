@@ -9,6 +9,7 @@ class Login < SitePrism::Page
         login.set usuario
         password.set senha
         click_button 'kc-login'
+        
     end
     
 end

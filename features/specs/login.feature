@@ -1,5 +1,5 @@
 #language: pt
-
+@ChangeBrowserZoom
 @logout
 @login
 Funcionalidade: Login
