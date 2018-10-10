@@ -10,6 +10,7 @@ class Cadastrar < SitePrism::Page
     element :btn_avancar, '#avancar'
     element :btn_cancelar, '#cancelar'
     element :adcionar_doc, '#adicionarDocumento'
+    element :mostrar_dados_credenciais, '.ui-fieldset-toggler'
     
     #Elementos: CheckBox Mapeados
     element :nacionalidade_desconhecida, '#nacionalidadeDesconhecida'
@@ -22,6 +23,12 @@ class Cadastrar < SitePrism::Page
     element :nacionalidade, '#nacionalidade'
     element :numero_doc, '#numeroDocumento'
     element :auto_complet, '.ui-autocomplete-panel'
+    element :dat_ocorrencia, '#dataOcorrencia'
+    element :municipio_ocorrencia_opcao, '#municipio'
+    element :aeroport_vinc, '#aeroportoVinculado'
+    element :auto_complet, '.ui-autocomplete-items'
+ 
+    
     
     #navegação: menu
     def menu_canard
@@ -44,29 +51,32 @@ class Cadastrar < SitePrism::Page
     #metodo seleção documentos
     def doc_selecao (tipo_documento)
         doc = tipo_documento.upcase
-      if doc.eql? "PASSAPORTE"
-                find('option.ng-star-inserted:nth-child(2)').select_option
-            elsif doc.eql? "RG"
-                find('option.ng-star-inserted:nth-child(3)').select_option
-            elsif doc.eql? "CNM"
-                find('option.ng-star-inserted:nth-child(4)').select_option
-            elsif doc.eql? "DNI"
-                find('option.ng-star-inserted:nth-child(5)').select_option  
-      end
+        if doc.eql? "PASSAPORTE"
+            find('option.ng-star-inserted:nth-child(2)').select_option
+        elsif doc.eql? "RG"
+            find('option.ng-star-inserted:nth-child(3)').select_option
+        elsif doc.eql? "CNM"
+            find('option.ng-star-inserted:nth-child(4)').select_option
+        elsif doc.eql? "DNI"
+            find('option.ng-star-inserted:nth-child(5)').select_option  
+        end
    end
 
     #metodo de acao: Cadastrar Candidato
     def cadastrar (nome_candidato, data_nascimento_candidato, cpf_candidato, nome_mae_candidato, nasc_desc, nacionalidade_candidato)
+           
             nome.set nome_candidato
             data_nascimento.set data_nascimento_candidato
+            cpf.click
             cpf.set cpf_candidato
             nome_mae.set nome_mae_candidato
-           nasc_desc = nasc_desc .upcase
-       if nacionalidade.eql? "SIM"
+            nasc_desc = nasc_desc .upcase
+
+       if nasc_desc.eql? "SIM"
             nacionalidade_desconhecida.click 
-            else
-                nacionalidade.set nacionalidade_candidato
-                auto_complet.click
+        else
+            nacionalidade.set nacionalidade_candidato
+            auto_complet.click
        end
     end
 
@@ -75,13 +85,120 @@ class Cadastrar < SitePrism::Page
         adcionar_doc.click
         doc_selecao tipo_doc
     end
+
+    #método exibir dados credenciais
+    def dados_credenciais 
+        mostrar_dados_credenciais.click
+    end
   
     #Método de ação: selicinar o tipo de documento
     def tipo_ocorrencia (ocorrencia)
-
+        ocorrencia = ocorrencia.upcase
+        
+        if ocorrencia.eql? "AUTO DE PRISÃO EM FLAGRANTE"
+            find('#tipoOcorrencia > option:nth-child(2)').select_option
+        elsif ocorrencia.eql? 'BOLETIM DE OCORRÊNCIA POLICIAL'
+            find('#tipoOcorrencia > option:nth-child(3)').select_option
+        elsif ocorrencia.eql? "RELATÓRIO DE INTELIGÊNCIA"
+            find('#tipoOcorrencia > option:nth-child(4)').select_option
+        elsif ocorrencia.eql? 'ORDEM JUDICIAL'
+            find('#tipoOcorrencia > option:nth-child(5)').select_option
+        elsif ocorrencia.eql? 'OUTROS'
+            find('#tipoOcorrencia > option:nth-child(6)').select_option
+        elsif ocorrencia.eql? 'PORTARIA'
+            find('#tipoOcorrencia > option:nth-child(7)').select_option
+        end
     end
-     
-end
 
+    #método inserir data de ocorrência
+    def data_ocorrencia(data)
+        dat_ocorrencia.set data
+    end
+
+    #metodo UF da Ocorrência
+    def uf_ocorrencia(uf)
+        uf = uf.upcase
+        
+        case uf
+            when 'AC'
+                find('#uf > option:nth-child(2)').select_option
+            when 'AL'
+                find('#uf > option:nth-child(3)').select_option
+            when 'AM'
+                find('#uf > option:nth-child(4)').select_option
+            when 'AP'
+                find('#uf > option:nth-child(5)').select_option
+            when 'BA'
+                find('#uf > option:nth-child(6)').select_option
+            when 'CE'
+                find('#uf > option:nth-child(7)').select_option
+            when "DF"
+                find('#uf > option:nth-child(8)').select_option
+            when 'ES'
+                find('#uf > option:nth-child(9)').select_option
+            when 'GO'
+                find('#uf > option:nth-child(10)').select_option
+            when 'MA'
+                find('#uf > option:nth-child(11)').select_option
+            when 'MG'
+                find('#uf > option:nth-child(12)').select_option
+            when 'MS'
+                find('#uf > option:nth-child(13)').select_option
+            when 'MT'
+                find('#uf > option:nth-child(14)').select_option
+            when 'PA'
+                find('#uf > option:nth-child(15)').select_option
+            when 'PB'
+                find('#uf > option:nth-child(16)').select_option
+            when 'PE'
+                find('#uf > option:nth-child(17)').select_option
+            when 'PI'
+                find('#uf > option:nth-child(18)').select_option
+            when 'PR'
+                find('#uf > option:nth-child(19)').select_option
+            when 'RJ'
+                find('#uf > option:nth-child(20)').select_option
+            when 'RN'
+                find('#uf > option:nth-child(21)').select_option
+            when 'RO'
+                find('#uf > option:nth-child(22)').select_option
+            when 'RR'
+                find('#uf > option:nth-child(23)').select_option
+            when 'RS'
+                find('#uf > option:nth-child(24)').select_option
+            when 'SC'
+                find('#uf > option:nth-child(25)').select_option
+            when 'SE'
+                find('#uf > option:nth-child(26)').select_option
+            when 'SP'
+                find('#uf > option:nth-child(27)').select_option
+            when 'TO'
+                find('#uf > option:nth-child(28)').select_option
+        end
+    end
+
+     #metodo Município da Ocorrência
+     def municipio_ocorrencia(municipio)
+        municipio = municipio.capitalize
+        municipio_ocorrencia_opcao.click
+        select municipio, from: 'municipio'
+     end
+
+     #metodo insere aeroporto vinculado
+     def aeroporto_vinvulado(aeroporto)
+        aeroport_vinc.set aeroporto
+        auto_complet.click
+     end
+
+     #método realizar a descrição da ocorrência
+     def ocorrencia_descricao(argumentos)
+        argumentos = argumentos.upcase
+
+        text_area = first('#descricaoOcorrencia').native
+        text_area.send_keys(argumentos)
+     end
+
+
+end
 
 
