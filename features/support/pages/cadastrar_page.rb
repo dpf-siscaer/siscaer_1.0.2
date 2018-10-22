@@ -11,6 +11,8 @@ class Cadastrar < SitePrism::Page
     element :btn_cancelar, '#cancelar'
     element :adcionar_doc, '#adicionarDocumento'
     element :mostrar_dados_credenciais, '.ui-fieldset-toggler'
+    element :btrn_salvar, '#salvar'
+    element :btn_prosseguir, '#prosseguir '
     
     #Elementos: CheckBox Mapeados
     element :nacionalidade_desconhecida, '#nacionalidadeDesconhecida'
@@ -27,6 +29,7 @@ class Cadastrar < SitePrism::Page
     element :municipio_ocorrencia_opcao, '#municipio'
     element :aeroport_vinc, '#aeroportoVinculado'
     element :auto_complet, '.ui-autocomplete-items'
+    element :data_validacao, '#dataValidade'
  
     
     
@@ -46,6 +49,14 @@ class Cadastrar < SitePrism::Page
 
     def cancelar
         btn_cancelar.click
+    end
+
+    def salvar
+        btrn_salvar.click
+    end
+
+    def prosseguir
+        btn_prosseguir.click
     end
 
     #metodo seleção documentos
@@ -81,11 +92,13 @@ class Cadastrar < SitePrism::Page
     end
 
     #método de ação: adicionar Documentos do Candidato
-    def adicionar_documentos (tipo_doc)
-        adcionar_doc.click
+    def adicionar_documentos (tipo_doc, num_doc)
         doc_selecao tipo_doc
+        numero_doc.set num_doc
+        adcionar_doc.click
     end
 
+    
     #método exibir dados credenciais
     def dados_credenciais 
         mostrar_dados_credenciais.click
@@ -118,7 +131,7 @@ class Cadastrar < SitePrism::Page
     #metodo UF da Ocorrência
     def uf_ocorrencia(uf)
         uf = uf.upcase
-        
+        find_by_id('uf').click
         case uf
             when 'AC'
                 find('#uf > option:nth-child(2)').select_option
@@ -190,15 +203,45 @@ class Cadastrar < SitePrism::Page
         auto_complet.click
      end
 
-     #método realizar a descrição da ocorrência
-     def ocorrencia_descricao(argumentos)
-        argumentos = argumentos.upcase
+     #método descrição da ocorrência
+     def ocorrencia_descricao(texto)
+        texto = texto.upcase
 
-        text_area = first('#descricaoOcorrencia').native
-        text_area.send_keys(argumentos)
+        desc = first('#descricaoOcorrencia').native
+        desc.send_keys(texto)
      end
 
+     #método observacoes
+     def ocorrencia_observacao(observacao)
+        observacao = observacao.upcase
 
+        obs = first('#observacao').native
+        obs.send_keys(observacao)
+     end
+
+     #métod para lançar a data de validação da ocorrência
+     def lancar_data_validacao(data_validacao_interessado)
+        data_validacao.set data_validacao_interessado
+     end
+
+     #método upload arquivo
+     def upload
+        @arquivo = "C:\\automocao\\siscaer_1.0.2\\features\\arquivos\\PDF_TESTE5.pdf"
+        attach_file('documento', @arquivo, make_visible: true)
+        click_button 'adicionarOcorrencia'
+        sleep(10)
+     end
+
+     def interacao_cadastro(nome_cand, data_nasc_cand, cpf_cand, nome_mae_cand, nasc_dc, nc_cd,t_doc, nu_doc)
+        cadastrar nome_cand, data_nasc_cand, cpf_cand, nome_mae_cand, nasc_dc, nc_cd
+        adicionar_documentos t_doc, nu_doc
+        avancar
+        if  page.has_text? 'Atenção: Foi(ram) encontrado(s) na base do CANARD/Credenciados registro(s) de credenciado(s) com os mesmos dados informados.'
+            prosseguir
+        end
+    end
+
+    
 end
 
 
