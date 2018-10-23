@@ -226,7 +226,7 @@ class Cadastrar < SitePrism::Page
 
      #método upload arquivo
      def upload
-        @arquivo = "C:\\automocao\\siscaer_1.0.2\\features\\arquivos\\PDF_TESTE5.pdf"
+        @arquivo = "https:\\\github.com\\dpf-siscaer\\siscaer_1.0.2\\blob\\master\\features\\arquivos\\PDF_TESTE5.pdf"
         attach_file('documento', @arquivo, make_visible: true)
         click_button 'adicionarOcorrencia'
         sleep(10)
