@@ -11,9 +11,7 @@ Quando("eu estou no formulario cadastro") do
      rg = '354600205'
      @cadastro.interacao_cadastro nome, data_nascimento, cpf, nome_mae, nasc_desconhecida, nacionalidade_cand,"rg", rg
      #@cadastro.adicionar_documentos "rg", rg
-     sleep(5)
-    
-
+  
      @cadastro.dados_credenciais 
      @cadastro.tipo_ocorrencia 'BOLETIM DE OCORRÊNCIA POLICIAL'
      @cadastro.data_ocorrencia "14/10/2012"
@@ -28,8 +26,6 @@ Quando("eu estou no formulario cadastro") do
      @cadastro.lancar_data_validacao data_val
      @cadastro.upload
      @cadastro.salvar
-
-     sleep(5)
 
   end                                                                            
                                                                                  

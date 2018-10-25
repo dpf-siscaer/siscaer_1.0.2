@@ -10,7 +10,7 @@ Capybara.register_driver :insecure_selenium do |app|
   
   Capybara::Selenium::Driver.new(
     app,
-    browser: :firefox,
+    browser: :chrome,
     desired_capabilities: { accept_insecure_certs: true }
   )
   

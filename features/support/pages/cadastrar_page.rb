@@ -226,11 +226,15 @@ class Cadastrar < SitePrism::Page
 
      #método upload arquivo
      def upload
-        @arquivo = "C:\\automocao\\siscaer_1.0.2\\features\\arquivos\\PDF_TESTE5.pdf"
+        
+        #@arquivo = "C:\\automocao\\siscaer_1.0.2\\features\\support\\arquivos\\PDF_TESTE5.pdf"
+       
+
+        @arquivo = File.expand_path('..\\..\\arquivos\\PDF_TESTE5.pdf', __FILE__)
         attach_file('documento', @arquivo, make_visible: true)
         click_button 'adicionarOcorrencia'
         sleep(10)
-     end
+    end
 
      def interacao_cadastro(nome_cand, data_nasc_cand, cpf_cand, nome_mae_cand, nasc_dc, nc_cd,t_doc, nu_doc)
         cadastrar nome_cand, data_nasc_cand, cpf_cand, nome_mae_cand, nasc_dc, nc_cd
@@ -240,6 +244,7 @@ class Cadastrar < SitePrism::Page
             prosseguir
         end
     end
+
 
     
 end
