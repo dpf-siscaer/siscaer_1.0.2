@@ -59,6 +59,14 @@ class Cadastrar < SitePrism::Page
         btn_prosseguir.click
     end
 
+    def dados_credenciais 
+        mostrar_dados_credenciais.click
+    end
+  
+
+=begin
+    Método que será utilizado pelo adicionar_documentos
+=end
     #metodo seleção documentos
     def doc_selecao (tipo_documento)
         doc = tipo_documento.upcase
@@ -91,6 +99,9 @@ class Cadastrar < SitePrism::Page
        end
     end
 
+=begin
+    Método que será utilizado pelo interacao_cadastro
+=end
     #método de ação: adicionar Documentos do Candidato
     def adicionar_documentos (tipo_doc, num_doc)
         doc_selecao tipo_doc
@@ -98,12 +109,6 @@ class Cadastrar < SitePrism::Page
         adcionar_doc.click
     end
 
-    
-    #método exibir dados credenciais
-    def dados_credenciais 
-        mostrar_dados_credenciais.click
-    end
-  
     #Método de ação: selicinar o tipo de documento
     def tipo_ocorrencia (ocorrencia)
         ocorrencia = ocorrencia.upcase
@@ -225,15 +230,13 @@ class Cadastrar < SitePrism::Page
      end
 
      #método upload arquivo
-     def upload
+    def upload
         
-        #@arquivo = "C:\\automocao\\siscaer_1.0.2\\features\\support\\arquivos\\PDF_TESTE5.pdf"
-       
+        @arquivo = "C:\\automocao\\siscaer_1.0.2\\features\\arquivos\\PDF_TESTE5.pdf"
 
-        @arquivo = File.expand_path('..\\..\\arquivos\\PDF_TESTE5.pdf', __FILE__)
+        #@arquivo = File.join(Dir.pwd, 'features\\arquivos\\PDF_TESTE5.pdf')
         attach_file('documento', @arquivo, make_visible: true)
         click_button 'adicionarOcorrencia'
-        sleep(10)
     end
 
      def interacao_cadastro(nome_cand, data_nasc_cand, cpf_cand, nome_mae_cand, nasc_dc, nc_cd,t_doc, nu_doc)
@@ -243,10 +246,7 @@ class Cadastrar < SitePrism::Page
         if  page.has_text? 'Atenção: Foi(ram) encontrado(s) na base do CANARD/Credenciados registro(s) de credenciado(s) com os mesmos dados informados.'
             prosseguir
         end
-    end
-
-
-    
+    end 
 end
 
 

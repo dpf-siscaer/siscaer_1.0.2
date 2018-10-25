@@ -3,7 +3,7 @@ After('@logout') do
 end
 
 After do |scenario|
-    #tira uma print
+    
     file_name = scenario.name.tr(' ', '-').downcase!
     shot = "logs/shots/#{file_name}.png"
     page.save_screenshot(shot)
