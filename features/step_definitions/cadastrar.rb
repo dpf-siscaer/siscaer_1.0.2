@@ -22,7 +22,8 @@ Quando("eu estou no formulario cadastro e insiro os seguintes dados pessoais: No
   @cadastro.salvar
  
 end
-                                                                                 
-#  Entao("eu posso inserir as informacoes do candidato") do                       
-    
- # end                                                                            
+
+Entao("eu visualizo a confirmação inclusão de ocorrência {string}") do |msg|
+  
+   expect(find(:xpath,'//*[@id="toast-container"]')).to have_content msg
+end
